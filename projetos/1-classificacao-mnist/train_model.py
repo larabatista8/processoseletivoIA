@@ -2,8 +2,10 @@ import tensorflow as tf
 from tensorflow import keras
 from tensorflow.keras import layers
 from tensorflow.keras import models
+from tensorflow.keras import callbacks
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Dropout, Activation, Flatten, Conv2D, MaxPooling2D,BatchNormalization
+from tensorflow.keras.callbacks import EarlyStopping
 import numpy as np
 
 # ---------------------------------------------------------------------------
@@ -37,29 +39,26 @@ x_test = x_test.reshape(x_test.shape[0], 28, 28, 1)
 #      seguida de Dropout antes da camada de saída (10 classes, softmax)
 
 model = Sequential([
-        # Bloco Convolucional 1
         Conv2D(32, (3, 3), activation='relu', padding='same', input_shape=(28,28,1)),
         BatchNormalization(),
         MaxPooling2D(pool_size=(2, 2)),
         
-        # Bloco Convolucional 2
         Conv2D(64, (3, 3), activation='relu', padding='same'),
         BatchNormalization(),
         MaxPooling2D(pool_size=(2, 2)),
         
-        # Bloco Convolucional 3
         Conv2D(128, (3, 3), activation='relu', padding='same'),
         BatchNormalization(),
         MaxPooling2D(pool_size=(2, 2)),
         
-        # Transforma a matriz 2D em um vetor 1D
         Flatten(),
-        
-        # Dropout antes da camada de saída para evitar overfitting
         Dropout(0.5),
-        
-        # Camada de Saída (10 classes)
         Dense(10, activation='softmax')
     ])
-    
+#compilando modelo
+model.compile(    optimizer='adam',
+    loss='sparse_categorical_crossentropy',
+    metrics=['accuracy'],
+)
     #   5. Treinar com EarlyStopping monitorando a perda de validação
+early_stop = EarlyStopping(monitor= 'val_loss', patience= 5, restore_best_weights = True)
