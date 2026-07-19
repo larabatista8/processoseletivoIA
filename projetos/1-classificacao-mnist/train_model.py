@@ -32,9 +32,6 @@ x_test = x_test/255.0
 x_train = x_train.reshape(x_train.shape[0], 28, 28, 1)
 x_test = x_test.reshape(x_test.shape[0], 28, 28, 1)
 
-#   3. Separar um conjunto de validação (ex: validation_split ou split manual)
-#model.fit(x_train, y_train, batch_size=32, validation_split=0.2,epochs=1)
-
 # 4. Construir uma CNN com 3-4 blocos Conv2D + BatchNormalization + MaxPooling2D,
 #      seguida de Dropout antes da camada de saída (10 classes, softmax)
 
@@ -60,5 +57,15 @@ model.compile(    optimizer='adam',
     loss='sparse_categorical_crossentropy',
     metrics=['accuracy'],
 )
-    #   5. Treinar com EarlyStopping monitorando a perda de validação
+#   5. Treinar com EarlyStopping monitorando a perda de validação
 early_stop = EarlyStopping(monitor= 'val_loss', patience= 5, restore_best_weights = True)
+
+#   3. Separar um conjunto de validação (ex: validation_split ou split manual)
+historico = model.fit(x_train, y_train, batch_size=128, epochs=15, callbacks= [early_stop], validation_split=0.2, verbose= False)
+
+# 6. Exibir a acurácia de validação final no terminal
+print("Acurácia de validação final: ")
+print(historico.history['val_accuracy'][-1])
+
+#   7. Salvar o modelo treinado como "model.h5"
+model.save('model.h5')
