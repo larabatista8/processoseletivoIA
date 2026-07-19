@@ -13,3 +13,14 @@ import os
 # ---------------------------------------------------------------------------
 
 # insira seu código aqui
+#   1. Carregar o modelo treinado em "model.h5"
+model = tf.keras.models.load_model("projetos/1-classificacao-mnist/model.h5")
+#   2. Converter para TensorFlow Lite usando tf.lite.TFLiteConverter
+converter= tf.lite.TFLiteConverter.from_keras_model(model)
+#   3. Aplicar uma técnica de otimização (ex: Dynamic Range Quantization,
+#      via converter.optimizations = [tf.lite.Optimize.DEFAULT])
+converter.optimizations = [tf.lite.Optimize.DEFAULT]
+#   4. Salvar o resultado como "model.tflite"
+model_tf= converter.convert()
+with open("projetos/1-classificacao-mnist/model.tflite", "wb") as f:
+    f.write(model_tf)
