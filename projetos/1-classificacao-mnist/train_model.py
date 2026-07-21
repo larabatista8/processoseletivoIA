@@ -1,14 +1,14 @@
 import os
 os.environ["TF_USE_LEGACY_KERAS"] = "1" 
+
 import tensorflow as tf
-from tensorflow import keras
-from tensorflow.keras import layers
-from tensorflow.keras import models
-from tensorflow.keras import callbacks
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Dense, Dropout, Activation, Flatten, Conv2D, MaxPooling2D,BatchNormalization
-from tensorflow.keras.callbacks import EarlyStopping
 import numpy as np
+
+import tf_keras as keras
+from tf_keras.models import Sequential
+from tf_keras.layers import Dense, Dropout, Activation, Flatten, Conv2D, MaxPooling2D, BatchNormalization
+from tf_keras.callbacks import EarlyStopping
+
 
 # ---------------------------------------------------------------------------
 # Projeto 1 — Classificação MNIST
