@@ -85,11 +85,16 @@ projetos/1-classificacao-mnist/
 
 ## 📝 Relatório do Candidato
 
-👤 **Nome Completo:**
+👤 **Nome Completo: Larissa Batista**
 
 ### 1️⃣ Resumo da Arquitetura do Modelo
 
 Descreva, em palavras, a arquitetura da CNN implementada em `train_model.py` (número de blocos convolucionais, uso de batch normalization/dropout, estratégia de validação/early stopping).
+
+A arquitetura CNN possui 3 blocos convolucionais, onde os filtros dobram a cada etapa, porém todos os blocos possuem janelas 3x3, ativação ReLU e padding = same para evitar a perda de informações nas bordas da imagem. 
+Além disso, em cada bloco foi aplicado uma camada de BatchNormalization para estabilizar e acelerar a convergência do modelo e também um MaxPooling2D para reduzir a dimensionalidade.
+Na etapa de classificação final os dados são achatados com Flatten e passam por uma regularização Dropout de 0,5. Enquanto a camada de saída ,Dense, possui 10 classes e  ativação softmax.
+A estratégia de Treinamento reservou 20% do conjunto de dados de treinamento para validação interna com validation_split=0.2 e utilizou o otimizador Adam e a função de perda Sparse Categorical Crossentropy.  Além disso,o treinamento foi configurado para até 15 épocas, regido por um EarlyStopping monitorando a val_loss. Ele possui uma paciência de 5 épocas e está configurado para restaurar automaticamente os melhores pesos da rede caso o treinamento seja interrompido antecipadamente.
 
 ### 2️⃣ Bibliotecas Utilizadas
 
@@ -97,7 +102,7 @@ Liste as principais bibliotecas utilizadas, preferencialmente com suas versões.
 
 ### 3️⃣ Técnica de Otimização do Modelo
 
-Explique qual técnica foi utilizada para otimizar o modelo em `optimize_model.py`.
+Para otmização foi utilizada a técnica `Dynamic Range Quantization`. Essa técnica permite os pesos da rede neural que estavam no formato de ponto flutuante de 32 bits sejam automaticamente comprimidos para números inteiros de 8 bits. Essa mudança permite a redução do tamanho do arquivo original, trazendo como consequência um ganho significativo na velocidade de inferência em processadores mais simples.
 
 ### 4️⃣ Resultados Obtidos
 
@@ -106,6 +111,9 @@ Informe a acurácia de validação obtida e o tamanho dos arquivos `model.h5` e 
 ### 5️⃣ Comentários Adicionais (Opcional)
 
 Dificuldades encontradas, decisões técnicas importantes, limitações do modelo, aprendizados durante o desafio.
+
+Desenvolvendo esse projeto pude aprender a utilizar o  tensorflow para acessar datasets, pois até o momento só tinha utilizado arquivos csv para acessar conjuntos de dados. Além disso, ele  também foi importante para que eu desenvolvesse uma melhor compreensão sobre como modelos de IA são desenvolvidos e treinados, especialmente na etapa de configuração da CNN, pois pesquisar e entender o que significa cada parâmetro utilizado possibilita que o código desenvolvido e os resultados obtidos façam ainda mais sentido.
+
 
 ### 6️⃣ Exemplo de Inferência
 
