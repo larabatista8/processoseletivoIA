@@ -22,5 +22,5 @@ converter= tf.lite.TFLiteConverter.from_keras_model(model)
 converter.optimizations = [tf.lite.Optimize.DEFAULT]
 #   4. Salvar o resultado como "model.tflite"
 model_tf= converter.convert()
-with open("projetos/1-classificacao-mnist/model.tflite", "wb") as f:
+with open("model.tflite", "wb") as f:
     f.write(model_tf)
