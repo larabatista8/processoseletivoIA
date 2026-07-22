@@ -7,7 +7,9 @@
 
 A arquitetura CNN possui 3 blocos convolucionais, onde os filtros dobram a cada etapa, porém todos os blocos possuem janelas 3x3, ativação ReLU e padding = same para evitar a perda de informações nas bordas da imagem. 
 Além disso, em cada bloco foi aplicado uma camada de BatchNormalization para estabilizar e acelerar a convergência do modelo e também um MaxPooling2D para reduzir a dimensionalidade.
+
 Na etapa de classificação final os dados são achatados com Flatten e passam por uma regularização Dropout de 0,5. Enquanto a camada de saída ,Dense, possui 10 classes e  ativação softmax.
+
 A estratégia de Treinamento reservou 20% do conjunto de dados de treinamento para validação interna com validation_split=0.2 e utilizou o otimizador Adam e a função de perda Sparse Categorical Crossentropy.  Além disso,o treinamento foi configurado para até 15 épocas, regido por um EarlyStopping monitorando a val_loss. Ele possui uma paciência de 5 épocas e está configurado para restaurar automaticamente os melhores pesos da rede caso o treinamento seja interrompido antecipadamente.
 
 ### 2️⃣ Bibliotecas Utilizadas
