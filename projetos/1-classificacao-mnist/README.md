@@ -18,6 +18,8 @@ tensorflow - versão: 2.21.0
 
 numpy- versão:  2.4.6
 
+keras- versão:3.15.0
+
 
 ### 3️⃣ Técnica de Otimização do Modelo
 
