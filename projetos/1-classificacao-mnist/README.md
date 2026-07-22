@@ -106,15 +106,23 @@ Para otmização foi utilizada a técnica `Dynamic Range Quantization`. Essa té
 
 ### 4️⃣ Resultados Obtidos
 
-Informe a acurácia de validação obtida e o tamanho dos arquivos `model.h5` e `model.tflite`.
+Acurácia de validação: 99,12% 
+Tamanho do arquivo `model.h5`: 1.27 MB
+Tamanho do arquivo `model.tflite`: 114 KB
 
 ### 5️⃣ Comentários Adicionais (Opcional)
 
-Dificuldades encontradas, decisões técnicas importantes, limitações do modelo, aprendizados durante o desafio.
 
 Desenvolvendo esse projeto pude aprender a utilizar o  tensorflow para acessar datasets, pois até o momento só tinha utilizado arquivos csv para acessar conjuntos de dados. Além disso, ele  também foi importante para que eu desenvolvesse uma melhor compreensão sobre como modelos de IA são desenvolvidos e treinados, especialmente na etapa de configuração da CNN, pois pesquisar e entender o que significa cada parâmetro utilizado possibilita que o código desenvolvido e os resultados obtidos façam ainda mais sentido.
 
 
 ### 6️⃣ Exemplo de Inferência
 
-Cole a saída do terminal ao rodar `run_inference.py` (predito vs. real para as 5+ amostras), e comente brevemente se houve algum caso interessante (acerto ou erro) entre as amostras testadas.
+O arquivo `run_inference.py` foi executado  três vezes, solicitando respectivamente, 5, 10 e 15 amostras para testar o modelo. Durante os testes não houve nenhum erro de predição, o que indica que o processo de otimização do modelo foi capaz de manter a precisão do modelo original com alta precisão. 
+
+<img width="637" height="172" alt="WhatsApp Image 2026-07-21 at 21 53 31" src="https://github.com/user-attachments/assets/b598c0a0-1360-49e5-89c7-b57ea0d2728c" />
+<img width="498" height="277" alt="WhatsApp Image 2026-07-21 at 21 53 57" src="https://github.com/user-attachments/assets/684b3752-d7de-49b3-b59e-f48a82fb0b40" />
+<img width="625" height="445" alt="WhatsApp Image 2026-07-21 at 21 54 50" src="https://github.com/user-attachments/assets/122c3440-7971-46cc-b283-723c25783108" />
+
+
+
