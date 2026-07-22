@@ -36,10 +36,14 @@ Tamanho do arquivo `model.tflite`: 114 KB
 
 Desenvolvendo esse projeto pude aprender a utilizar o  tensorflow para acessar datasets, pois até o momento só tinha utilizado arquivos csv para acessar conjuntos de dados. Além disso, ele  também foi importante para que eu desenvolvesse uma melhor compreensão sobre como modelos de IA são desenvolvidos e treinados, especialmente na etapa de configuração da CNN, pois pesquisar e entender o que significa cada parâmetro utilizado possibilita que o código desenvolvido e os resultados obtidos façam ainda mais sentido.
 
+Uma dificuldade encontrada ocorreu durante a etapa de validação automática do github actions, pois o modelo treinado localmente utilizava o keras 3 e adicionava atributos de configuração não reconhecidos pelo ambiente de validação. O problema foi resolvido através de uma adequação na forma de salvar o arquivo model.h5, garantindo assim, a compatibilidade dos testes sem comprometer a arquitetura do modelo e o cumprimento dos requisitos de avaliação.
+
+Uma decisão técnica tomada durante o desenvolvimento foi  aumentar o batch_size de 32 para 128, durante a fase de treinamento, a fim de que um número maior de imagens fosse analisado por vez.
+
 
 ### 6️⃣ Exemplo de Inferência
 
-O arquivo `run_inference.py` foi executado  três vezes, solicitando respectivamente, 5, 10 e 15 amostras para testar o modelo. Durante os testes não houve nenhum erro de predição, o que indica que o processo de otimização do modelo foi capaz de manter a precisão do modelo original com alta precisão. 
+O arquivo `run_inference.py` foi executado  três vezes, solicitando respectivamente, 5, 10 e 15 amostras para testar o modelo. Durante os testes não houve nenhum erro de predição, o que indica que o processo de otimização do modelo foi capaz de manter a precisão do modelo original com alta precisão. Além disso, observa-se que o modelo não apresentou dificuldades para classificar o número 1, o qual pode ser escrito apenas com um traço semelhante a letra i maiscúla ou com 1 traço inclinado no topo e outro traço reto na vertical, e ainda com um traço reto na horizontal.
 
 <img width="637" height="172" alt="WhatsApp Image 2026-07-21 at 21 53 31" src="https://github.com/user-attachments/assets/b598c0a0-1360-49e5-89c7-b57ea0d2728c" />
 <img width="498" height="277" alt="WhatsApp Image 2026-07-21 at 21 53 57" src="https://github.com/user-attachments/assets/684b3752-d7de-49b3-b59e-f48a82fb0b40" />
