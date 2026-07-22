@@ -13,6 +13,7 @@ A estratégia de Treinamento reservou 20% do conjunto de dados de treinamento pa
 ### 2️⃣ Bibliotecas Utilizadas
 
 tensorflow - versão: 2.21.0
+
 numpy- versão:  2.4.6
 
 
@@ -23,7 +24,9 @@ Para otmização foi utilizada a técnica `Dynamic Range Quantization`. Essa té
 ### 4️⃣ Resultados Obtidos
 
 Acurácia de validação: 99,12% 
+
 Tamanho do arquivo `model.h5`: 1.27 MB
+
 Tamanho do arquivo `model.tflite`: 114 KB
 
 ### 5️⃣ Comentários Adicionais (Opcional)
